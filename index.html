@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arsalan Mushtaque | Portfolio</title>
+    <!-- Use versioning to bust cache -->
+    <link rel="stylesheet" href="main.css?v=10">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+
+<body>
+    <header class="navbar">
+        <a href="index.html" class="logo">AM <span>Portfolio</span></a>
+        <nav>
+            <ul class="navlist">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="certifications.html">Certifications</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-wrapper">
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-name" style="text-shadow: 0 10px 20px rgba(0,0,0,0.5);"> Arsalan Mushtaque</h1>
+                <h2 id="typing-title" class="hero-title">Full Stack Developer</h2>
+
+                <p class="hero-description">
+                    Welcome to my digital playground! I craft elegant solutions through code, turning ideas into
+                    immersive digital experiences.
+                </p>
+
+                <div class="skill-pills">
+                    <span class="skill-pill">React</span>
+                    <span class="skill-pill">Node.js</span>
+                    <span class="skill-pill">JavaScript</span>
+                    <span class="skill-pill">MongoDB</span>
+                    <span class="skill-pill">HTML/CSS</span>
+                </div>
+
+                <div class="btn-container">
+                    <a href="projects.html" id="magnetic-btn" class="btn btn-primary">View My Work</a>
+                    <a href="contact.html" class="btn btn-secondary">Contact Me</a>
+                </div>
+            </div>
+
+            <!-- Background Particles -->
+            <div class="particles-container" id="particles"></div>
+
+            <script>
+                // Generate Particles
+                const particlesContainer = document.getElementById('particles');
+                for (let i = 0; i < 20; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    const size = Math.random() * 4 + 2;
+                    particle.style.width = size + 'px';
+                    particle.style.height = size + 'px';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.top = Math.random() * 100 + '%';
+                    particle.style.animationDelay = Math.random() * 20 + 's';
+                    particle.style.opacity = Math.random() * 0.3;
+                    particlesContainer.appendChild(particle);
+                }
+
+                // High-End Typing Effect
+                const titleElement = document.getElementById('typing-title');
+                const words = ["Full Stack Developer", "UI/UX Designer", "Problem Solver"];
+                let wordIndex = 0;
+                let charIndex = 0;
+                let isDeleting = false;
+
+                function type() {
+                    const currentWord = words[wordIndex];
+                    if (isDeleting) {
+                        titleElement.textContent = currentWord.substring(0, charIndex - 1);
+                        charIndex--;
+                    } else {
+                        titleElement.textContent = currentWord.substring(0, charIndex + 1);
+                        charIndex++;
+                    }
+
+                    titleElement.innerHTML += '<span class="typing-cursor"></span>';
+
+                    let typeSpeed = 100;
+                    if (isDeleting) typeSpeed /= 2;
+
+                    if (!isDeleting && charIndex === currentWord.length) {
+                        typeSpeed = 2000;
+                        isDeleting = true;
+                    } else if (isDeleting && charIndex === 0) {
+                        isDeleting = false;
+                        wordIndex = (wordIndex + 1) % words.length;
+                        typeSpeed = 500;
+                    }
+
+                    setTimeout(type, typeSpeed);
+                }
+                type();
+
+                // Magnetic Button
+                const magneticBtn = document.getElementById('magnetic-btn');
+                document.addEventListener('mousemove', (e) => {
+                    const rect = magneticBtn.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+                    const distance = Math.sqrt(x*x + y*y);
+
+                    if (distance < 100) {
+                        magneticBtn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+                    } else {
+                        magneticBtn.style.transform = `translate(0, 0)`;
+                    }
+                });
+            </script>
+
+            <div class="profile-img-container">
+                <img src="image/Arsalan.jpeg" alt="Arsalan Mushtaque" class="profile-img">
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="about-section reveal" style="margin-top: 4rem; margin-bottom: 4rem;">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: 2.5rem; color: var(--accent-purple); font-weight: 700; margin-bottom: 1rem;">About
+                    <span style="color: var(--text-primary);">Me</span>
+                </h2>
+                <div
+                    style="width: 80px; height: 4px; background: linear-gradient(to right, var(--accent-purple), var(--accent-cyan)); margin: 0 auto; border-radius: 2px;">
+                </div>
+            </div>
+
+            <div class="about-grid" style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem;">
+
+                <!-- Left Column -->
+                <div class="about-left" style="display: flex; flex-direction: column; gap: 2rem;">
+
+                    <!-- Quick Facts -->
+                    <div class="glass-card" style="padding: 1.5rem;">
+                        <h3
+                            style="color: var(--text-primary); margin-bottom: 1.5rem; font-size: 1.2rem; font-weight: 600;">
+                            Quick Facts</h3>
+
+                        <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1.2rem;">
+                            <div
+                                style="width: 35px; height: 35px; border-radius: 8px; background: rgba(59, 130, 246, 0.1); display: flex; align-items: center; justify-content: center; color: var(--accent-purple); flex-shrink: 0;">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <p style="color: var(--text-secondary); font-size: 0.8rem; margin-bottom: 0.2rem;">
+                                    Location</p>
+                                <p style="color: var(--text-primary); font-size: 0.95rem; font-weight: 500;">West Bengal,
+                                    India</p>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1.2rem;">
+                            <div
+                                style="width: 35px; height: 35px; border-radius: 8px; background: rgba(59, 130, 246, 0.1); display: flex; align-items: center; justify-content: center; color: var(--accent-purple); flex-shrink: 0;">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <p style="color: var(--text-secondary); font-size: 0.8rem; margin-bottom: 0.2rem;">
+                                    Education</p>
+                                <p style="color: var(--text-primary); font-size: 0.95rem; font-weight: 500;">Pursuing
+                                    B.Tech in Computer Science</p>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 1rem; align-items: center;">
+                            <div
+                                style="width: 35px; height: 35px; border-radius: 8px; background: rgba(59, 130, 246, 0.1); display: flex; align-items: center; justify-content: center; color: var(--accent-purple); flex-shrink: 0;">
+                                <i class="fa-solid fa-briefcase"></i>
+                            </div>
+                            <div>
+                                <p style="color: var(--text-secondary); font-size: 0.8rem; margin-bottom: 0.2rem;">
+                                    Experience</p>
+                                <p style="color: var(--text-primary); font-size: 0.95rem; font-weight: 500;">1+ Years
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Not Coding -->
+                    <div class="glass-card" style="padding: 1.5rem;">
+                        <h3
+                            style="color: var(--text-primary); margin-bottom: 1.5rem; font-size: 1.2rem; font-weight: 600;">
+                            When I'm Not Coding</h3>
+
+                        <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                            <div
+                                style="background: rgba(15, 23, 42, 0.5); border: 1px solid var(--glass-border); padding: 0.8rem 1rem; border-radius: 8px; display: flex; align-items: center; gap: 1rem;">
+                                <i class="fa-solid fa-laptop"
+                                    style="color: var(--accent-cyan); font-size: 1.2rem; width: 25px; text-align: center;"></i>
+                                <span style="color: var(--text-primary); font-size: 0.95rem;">Surfing Web</span>
+                            </div>
+                            <div
+                                style="background: rgba(15, 23, 42, 0.5); border: 1px solid var(--glass-border); padding: 0.8rem 1rem; border-radius: 8px; display: flex; align-items: center; gap: 1rem;">
+                                <i class="fa-solid fa-book"
+                                    style="color: var(--accent-purple); font-size: 1.2rem; width: 25px; text-align: center;"></i>
+                                <span style="color: var(--text-primary); font-size: 0.95rem;">Reading</span>
+                            </div>
+                            <div
+                                style="background: rgba(15, 23, 42, 0.5); border: 1px solid var(--glass-border); padding: 0.8rem 1rem; border-radius: 8px; display: flex; align-items: center; gap: 1rem;">
+                                <i class="fa-solid fa-laptop"
+                                    style="color: var(--accent-cyan); font-size: 1.2rem; width: 25px; text-align: center;"></i>
+                                <span style="color: var(--text-primary); font-size: 0.95rem;">Exploring New Technologies</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="about-right" style="display: flex; flex-direction: column; gap: 2rem;">
+
+                    <!-- Journey -->
+                    <div class="glass-card" style="padding: 2.5rem;">
+                        <h3
+                            style="color: var(--accent-cyan); font-size: 1.4rem; margin-bottom: 1.5rem; font-weight: 600;">
+                            My Journey</h3>
+                        <p
+                            style="color: rgba(255, 255, 255, 0.9); font-size: 1rem; line-height: 1.7; margin-bottom: 1.2rem;">
+                            Hello! I'm <span style="color: var(--accent-purple); font-weight: 600;">Arsalan Mushtaque</span>,
+                            a passionate developer with a deep fascination for transforming complex problems into
+                            elegant digital solutions.
+                        </p>
+                        <p
+                            style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.2rem;">
+                            My journey in tech began with curious exploration and has evolved into a focused expertise
+                            in full-stack development. I specialize in crafting responsive, user-centered applications
+                            using React, Node.js, and MongoDB infrastructure.
+                        </p>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
+                            What drives me is the intersection of technology and creativity—finding that perfect balance
+                            between functional code and intuitive design. I'm constantly expanding my skills through
+                            hands-on projects and keeping up with emerging technologies.
+                        </p>
+                    </div>
+
+                    <!-- Approach -->
+                    <div class="glass-card" style="padding: 2.5rem;">
+                        <h3
+                            style="color: var(--accent-cyan); font-size: 1.4rem; margin-bottom: 1.5rem; font-weight: 600;">
+                            My Approach</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7;">
+                            I believe in creating technology that's not just functional but meaningful. Every line of
+                            code I write aims to solve real problems and enhance user experiences. I value clean
+                            architecture, scalable codebases, and collaborative problem solving.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <script>
+        // High-End Scroll Reveal Logic
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("active");
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
+
+</html>
